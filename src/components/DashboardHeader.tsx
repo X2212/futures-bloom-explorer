@@ -7,13 +7,22 @@ interface DashboardHeaderProps {
 }
 
 const DashboardHeader = ({ connected, onSettingsClick }: DashboardHeaderProps) => {
+  const todayLabel = new Date().toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  });
+
   return (
     <header className="bg-header border-b px-4 py-2 flex items-center justify-between">
       <div className="flex items-center gap-3">
         <Activity className="h-5 w-5 text-primary" />
-        <h1 className="text-lg font-semibold tracking-tight">
-          Commodity Terminal
-        </h1>
+        <div className="flex items-baseline gap-2">
+          <h1 className="text-lg font-semibold tracking-tight">Commodity Terminal</h1>
+          <span className="text-xs text-muted-foreground font-mono bg-secondary px-2 py-0.5 rounded">
+            {todayLabel}
+          </span>
+        </div>
         <span className="text-xs text-muted-foreground font-mono bg-secondary px-2 py-0.5 rounded">
           FUTURES & OPTIONS
         </span>
